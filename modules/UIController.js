@@ -120,7 +120,7 @@ export class UIController {
         const text = document.createElement('span');
         text.textContent = color.toUpperCase();
         text.style.color = textColor;
-        text.style.fontSize = '10px';
+        text.style.fontSize = '9px';
         text.style.letterSpacing = '1px';
         
         swatch.appendChild(text);
