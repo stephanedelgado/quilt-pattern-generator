@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Quilt Design Facility</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.7.0/lib/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-[#f5e6d8] min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <!-- Header -->
+        <header class="text-center mb-8">
+            <h1 class="text-3xl font-medium mb-4">Custom Quilt Design Facility</h1>
+            <p class="text-sm max-w-2xl mx-auto mb-6 leading-relaxed">
+                A practical tool to extract color palettes and determine distribution for patchwork 
+                artworks. One of quilting's most fundamental designs, this checkerboard reproduces 
+                a "Nine Patch" pattern from 1900's, likely designed in New Jersey, by an anonymous 
+                maker who repurposed wool, serge and gabardine fabrics typically destined for men's 
+                suits and coats.
+            </p>
+            <div class="mb-8">
+                <label for="imageUpload" class="inline-block px-6 py-2 border border-gray-700 cursor-pointer hover:bg-gray-100 transition-colors">
+                    Upload image
+                </label>
+                <input type="file" id="imageUpload" accept="image/*" class="hidden">
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex flex-col items-center space-y-6">
+            <!-- Color Palette -->
+            <div id="colorPalette" class="flex initial-opacity" style="width: 450px; height: 120px;"></div>
+
+            <!-- Quilt Pattern Canvas -->
+            <div id="canvasContainer" class="initial-opacity"></div>
+
+            <!-- Action Buttons -->
+            <div class="flex gap-4">
+                <button id="exportPNG" class="px-6 py-2 border border-gray-700 hover:bg-gray-100 transition-colors">
+                    Export PNG
+                </button>
+                <button id="generate" class="px-6 py-2 border border-gray-700 hover:bg-gray-100 transition-colors">
+                    Generate
+                </button>
+                <button id="exportSVG" class="px-6 py-2 border border-gray-700 hover:bg-gray-100 transition-colors">
+                    Export SVG
+                </button>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="text-center mt-16 text-sm">
+            <p>
+                Help support the community with your donation 
+                <a href="#" class="inline-block align-middle mx-1">
+                    <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_37x23.jpg" alt="PayPal" class="h-5 inline">
+                </a>
+                or <a href="mailto:contact@example.com" class="underline">contact me</a> with questions, 
+                and suggestions for improvement.
+            </p>
+        </footer>
+    </div>
+
+    <script type="module" src="main.js"></script>
+</body>
+</html>
