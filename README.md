@@ -17,7 +17,7 @@ A practical tool to extract color palettes and determine distribution for patchw
 4. Press `H` for all shortcuts
 
 ## Live Demo
-[Visit the app](https://YOUR-USERNAME.github.io/quilt-pattern-generator/)
+[Visit the app](https://stephanedelgado.github.io/quilt-pattern-generator/)
 
 ## Technologies
 - p5.js for canvas rendering
@@ -42,9 +42,9 @@ graph TD
     D --> I[generatePattern<br/>drawGrid<br/>exportSVG<br/>exportPNG]
     E --> J[setupEventListeners<br/>updatePaletteDisplay<br/>toggleOpacity]
     
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    style B fill:#bbf,stroke:#333,stroke-width:2px
-    style C fill:#bfb,stroke:#333,stroke-width:2px
-    style D fill:#bfb,stroke:#333,stroke-width:2px
-    style E fill:#bfb,stroke:#333,stroke-width:2px
+    style A fill:#812B0C,stroke:#333,stroke-width:2px
+    style B fill:#675D57,stroke:#333,stroke-width:2px
+    style C fill:#1D8F17,stroke:#333,stroke-width:2px
+    style D fill:#1D8F17,stroke:#333,stroke-width:2px
+    style E fill:#1D8F17,stroke:#333,stroke-width:2px
 ```
