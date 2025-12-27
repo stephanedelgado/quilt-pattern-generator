@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-[#f5e6d8] min-h-screen">
+<body class="bg-white min-h-screen">
     <div class="container mx-auto px-4 py-8 max-w-4xl">
         <!-- Header -->
         <header class="text-center mb-8">
@@ -25,7 +25,10 @@
                 suits and coats.
             </p>
             <div class="mb-8">
-                <label for="imageUpload" class="inline-block rounded-md px-6 py-2 border border-gray-700 cursor-pointer hover:bg-gray-200 transition-colors">
+                <label for="imageUpload" class="inline-block rounded-md px-6 py-2 border-2 border-gray-700 cursor-pointer hover:bg-gray-200 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="inline-block size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5"/>
+                    </svg>
                     Upload image
                 </label>
                 <input type="file" id="imageUpload" accept="image/*" class="hidden">
@@ -42,13 +45,13 @@
 
             <!-- Action Buttons -->
             <div class="flex gap-4">
-                <button id="exportPNG" class="px-6 py-2 border border-gray-700 hover:bg-gray-200 rounded-md transition-colors">
+                <button id="exportPNG" class="px-6 py-2 border-2 border-gray-700 hover:bg-gray-200 rounded-md transition-colors">
                     Export PNG
                 </button>
-                <button id="generate" class="px-6 py-2 border border-gray-700 hover:bg-gray-200 rounded-md transition-colors">
+                <button id="generate" class="px-6 py-2 border-2 border-gray-700 hover:bg-gray-200 rounded-md transition-colors">
                     Generate
                 </button>
-                <button id="exportSVG" class="px-6 py-2 border border-gray-700 hover:bg-gray-200 rounded-md transition-colors">
+                <button id="exportSVG" class="px-6 py-2 border-2 border-gray-700 hover:bg-gray-200 rounded-md transition-colors">
                     Export SVG
                 </button>
             </div>
@@ -57,13 +60,11 @@
         <!-- Footer -->
         <footer class="text-center mt-16 text-sm">
             <p>
-                Help support the community with your donation 
-                <a href="#" class="inline-block align-middle mx-1">
-                    <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_37x23.jpg" alt="PayPal" class="h-5 inline">
-                </a>
-                or <a href="mailto:contact@example.com" class="underline">contact me</a> with questions, 
-                and suggestions for improvement.
+                Feel free to <a href="mailto:stephanedelgado@gmail.com?subject=Quilting%20Design%20Community" class="underline">reach out</a> with ideas for making this space even better.
+                If you'd like to support the quilting community, PayPal donations are always appreciated. Questions, feedback, and suggestions for improvement are very welcome too.
             </p>
+            <img src="assets/qrcode.png" alt="" class="size-24 inline-block my-8">
+            <small class="block" >Made with speed, love, and Claude © 2025 Stéphane Delgado · MIT License</small>
         </footer>
     </div>
 
