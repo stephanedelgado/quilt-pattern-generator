@@ -8,7 +8,6 @@ export class UIController {
         this.shortcutsModal = null;
         this.createDropZone();
         this.createShortcutsModal();
-        this.addUndoRedoButtons();
     }
 
     createDropZone() {
@@ -47,28 +46,6 @@ export class UIController {
         document.body.appendChild(this.shortcutsModal);
     }
 
-    addUndoRedoButtons() {
-        const buttonsContainer = document.querySelector('.flex.gap-4');
-        
-        // Add undo button
-        const undoBtn = document.createElement('button');
-        undoBtn.id = 'undoBtn';
-        undoBtn.className = 'px-6 py-2 border border-gray-700 hover:bg-gray-100 transition-colors disabled:opacity-50';
-        undoBtn.innerHTML = '↶ Undo';
-        undoBtn.disabled = true;
-        
-        // Add redo button
-        const redoBtn = document.createElement('button');
-        redoBtn.id = 'redoBtn';
-        redoBtn.className = 'px-6 py-2 border border-gray-700 hover:bg-gray-100 transition-colors disabled:opacity-50';
-        redoBtn.innerHTML = '↷ Redo';
-        redoBtn.disabled = true;
-        
-        // Insert before first button
-        buttonsContainer.insertBefore(undoBtn, buttonsContainer.firstChild);
-        buttonsContainer.insertBefore(redoBtn, undoBtn.nextSibling);
-    }
-
     showDropZone() {
         this.dropZone.classList.remove('hidden');
     }
@@ -86,14 +63,6 @@ export class UIController {
         hint.className = 'text-center text-sm text-gray-600 mt-2';
         hint.innerHTML = 'Press <kbd class="px-2 py-1 bg-gray-200 rounded">H</kbd> for keyboard shortcuts';
         document.querySelector('main').appendChild(hint);
-    }
-
-    updateUndoRedoButtons(canUndo, canRedo) {
-        const undoBtn = document.getElementById('undoBtn');
-        const redoBtn = document.getElementById('redoBtn');
-        
-        if (undoBtn) undoBtn.disabled = !canUndo;
-        if (redoBtn) redoBtn.disabled = !canRedo;
     }
 
     displayPalette(colors) {
@@ -120,7 +89,7 @@ export class UIController {
         const text = document.createElement('span');
         text.textContent = color.toUpperCase();
         text.style.color = textColor;
-        text.style.fontSize = '9px';
+        text.style.fontSize = '10px';
         text.style.letterSpacing = '1px';
         
         swatch.appendChild(text);

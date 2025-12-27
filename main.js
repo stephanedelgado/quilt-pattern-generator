@@ -47,7 +47,7 @@ class QuiltApp {
         this.setupKeyboardShortcuts();
         this.setupDragAndDrop();
         
-        // Display keyboard shortcuts
+        // Display keyboard shortcuts hint
         this.uiController.showShortcutsHint();
     }
 
@@ -220,7 +220,6 @@ class QuiltApp {
         this.quiltGenerator.generate();
         this.saveToHistory();
         this.uiController.showNotification('New pattern generated!', 'success', 1500);
-        this.updateUndoRedoButtons();
     }
 
     saveToHistory() {
@@ -237,8 +236,6 @@ class QuiltApp {
         } else {
             this.historyIndex++;
         }
-        
-        this.updateUndoRedoButtons();
     }
 
     undo() {
@@ -248,7 +245,6 @@ class QuiltApp {
             this.quiltGenerator.setState(state);
             this.quiltGenerator.redraw();
             this.uiController.showNotification('Undo', 'info', 1000);
-            this.updateUndoRedoButtons();
         }
     }
 
@@ -259,15 +255,7 @@ class QuiltApp {
             this.quiltGenerator.setState(state);
             this.quiltGenerator.redraw();
             this.uiController.showNotification('Redo', 'info', 1000);
-            this.updateUndoRedoButtons();
         }
-    }
-
-    updateUndoRedoButtons() {
-        this.uiController.updateUndoRedoButtons(
-            this.historyIndex > 0,
-            this.historyIndex < this.history.length - 1
-        );
     }
 
     resetToGrayscale() {
