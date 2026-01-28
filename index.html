@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-white min-h-screen">
+<body class="bg-white">
     <div class="container mx-auto px-4 py-8 max-w-4xl">
         <!-- Header -->
         <header class="text-center mb-8">
@@ -34,15 +34,13 @@
         </header>
 
         <!-- Main Content -->
-        <main class="flex flex-col items-center space-y-6">
+        <main class="container mx-auto sm:px-4 sm:py-8 max-w-4xl space-y-6">
             <!-- Color Palette -->
-            <div id="colorPalette" class="flex initial-opacity" style="width: 450px; height: 120px;"></div>
-
+            <div id="colorPalette" class="flex justify-center initial-opacity" style="height: 120px;"></div>
             <!-- Quilt Pattern Canvas -->
-            <div id="canvasContainer" class="initial-opacity"></div>
-
+            <div id="canvasContainer" class="flex justify-center initial-opacity"></div>
             <!-- Action Buttons -->
-            <div class="flex gap-4">
+            <div class="flex justify-center gap-4">
                 <button id="exportPNG" class="px-6 py-2 border-2 border-gray-700 hover:bg-gray-200 rounded-md transition-colors">
                     Export PNG
                 </button>
