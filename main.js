@@ -20,10 +20,14 @@ class QuiltApp {
         // Initialize with grayscale palette
         this.currentPalette = this.colorExtractor.generateGrayscalePalette();
         
-        // Setup p5.js
+        // Setup p5.js with responsive canvas
         new p5((p) => {
             p.setup = () => {
-                const canvas = p.createCanvas(450, 450);
+                // Calculate responsive size
+                const container = document.getElementById('canvasContainer');
+                const size = Math.min(container.offsetWidth, 450);
+                
+                const canvas = p.createCanvas(size, size);
                 canvas.parent('canvasContainer');
                 p.noLoop();
                 
@@ -39,6 +43,17 @@ class QuiltApp {
 
             p.draw = () => {
                 this.quiltGenerator.draw();
+            };
+            
+            // Handle window resize
+            p.windowResized = () => {
+                if (this.isInitialized) {
+                    const container = document.getElementById('canvasContainer');
+                    const newSize = Math.min(container.offsetWidth, 450);
+                    p.resizeCanvas(newSize, newSize);
+                    this.quiltGenerator.updateCanvasSize();
+                    this.quiltGenerator.redraw();
+                }
             };
         });
 
@@ -133,9 +148,14 @@ class QuiltApp {
                 }
             }
             
-            // Show help: H or ?
+            // Toggle help: H or ?
             if (e.key === 'h' || e.key === 'H' || e.key === '?') {
                 this.uiController.toggleShortcutsHelp();
+            }
+            
+            // Close help with ESC
+            if (e.key === 'Escape') {
+                this.uiController.hideShortcutsHelp();
             }
         });
     }
@@ -152,28 +172,9 @@ class QuiltApp {
             });
         });
 
-        // Add visual feedback
-        dropZone.addEventListener('dragenter', (e) => {
-            dragCounter++;
-            if (e.dataTransfer.items && e.dataTransfer.items.length > 0) {
-                const item = e.dataTransfer.items[0];
-                if (item.type.match('^image/')) {
-                    this.uiController.showDropZone();
-                }
-            }
-        });
-
-        dropZone.addEventListener('dragleave', () => {
-            dragCounter--;
-            if (dragCounter === 0) {
-                this.uiController.hideDropZone();
-            }
-        });
-
         // Handle drop
         dropZone.addEventListener('drop', (e) => {
             dragCounter = 0;
-            this.uiController.hideDropZone();
             
             const files = e.dataTransfer.files;
             if (files.length > 0 && files[0].type.startsWith('image/')) {

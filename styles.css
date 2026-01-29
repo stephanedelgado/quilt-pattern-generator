@@ -1,17 +1,312 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     font-family: 'IBM Plex Mono', monospace;
+    font-size: clamp(14px, 2.5vw, 16px);
+    background-color: white;
+    color: #000;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* Header Styles */
+.header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+h1 {
+    font-size: clamp(24px, 5vw, 32px);
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.description {
+    font-size: clamp(13px, 2vw, 14px);
+    max-width: 700px;
+    margin: 0 auto 1.5rem;
+    line-height: 1.6;
+}
+
+.upload-section {
+    margin-bottom: 2rem;
+}
+
+.upload-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid #374151;
+    border-radius: 6px;
+    background-color: white;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.upload-button:hover {
+    background-color: #e5e7eb;
+}
+
+.upload-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Main Content */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.responsive-container {
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
 }
 
 .initial-opacity {
     opacity: 0.7;
 }
 
+/* Color Palette */
+#colorPalette {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    min-height: 100px;
+    /* gap: 0.25rem; */
+}
+
 .color-swatch {
     writing-mode: vertical-rl;
     text-orientation: mixed;
+    min-height: 100px;
+    flex: 1 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s;
 }
 
-/* #defaultCanvas0 {
-    width: 450px !important;
-    height: 450px !important;
-} */
+.color-swatch:hover {
+    transform: scale(1.1);
+}
+
+.color-swatch span {
+    font-size: clamp(8px, 1.5vw, 10px);
+    letter-spacing: 1px;
+    user-select: none;
+}
+
+/* Canvas Container */
+#canvasContainer {
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Button Group */
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.action-button {
+    padding: 0.75rem 1.5rem;
+    border: 2px solid #374151;
+    border-radius: 6px;
+    background-color: white;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: 400;
+}
+
+.action-button:hover {
+    background-color: #e5e7eb;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    margin-top: 4rem;
+    font-size: clamp(12px, 2vw, 14px);
+}
+
+.footer p {
+    margin-bottom: 1.5rem;
+}
+
+.footer-link {
+    text-decoration: underline;
+    color: inherit;
+}
+
+.qr-code {
+    width: 96px;
+    height: 96px;
+    display: inline-block;
+    margin: 2rem 0;
+}
+
+.copyright {
+    display: block;
+    font-size: clamp(11px, 1.8vw, 12px);
+}
+
+/* Shortcuts Modal */
+.shortcuts-modal {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+}
+
+/* Why this works: .shortcuts-modal.hidden (class + class) has higher specificity than .shortcuts-modal (single class), so it will always override the above display: flex. */
+.shortcuts-modal.hidden {
+    display: none;
+}
+
+.shortcuts-content {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    max-width: 450px;
+    width: 90%;
+}
+
+.shortcuts-content h3 {
+    font-size: clamp(16px, 3vw, 18px);
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.shortcuts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: clamp(12px, 2vw, 14px);
+}
+
+.shortcuts-list kbd {
+    padding: 0.25rem 0.5rem;
+    background-color: #e5e7eb;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 0.9em;
+}
+
+.shortcuts-footer {
+    margin-top: 1rem;
+    color: #6b7280;
+}
+
+.close-button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #e5e7eb;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.close-button:hover {
+    background-color: #d1d5db;
+}
+
+/* Notification */
+.notification {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    padding: 1rem 1.5rem;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    color: white;
+    z-index: 50;
+    transition: opacity 0.3s;
+}
+
+.notification.success {
+    background-color: #10b981;
+}
+
+.notification.error {
+    background-color: #ef4444;
+}
+
+.notification.info {
+    background-color: #3b82f6;
+}
+
+.notification.warning {
+    background-color: #f59e0b;
+}
+
+/* Keyboard Hint */
+.keyboard-hint {
+    text-align: center;
+    font-size: clamp(12px, 2vw, 14px);
+    color: #6b7280;
+    margin-top: 0.5rem;
+}
+
+.keyboard-hint kbd {
+    padding: 0.25rem 0.5rem;
+    background-color: #e5e7eb;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 640px) {
+    .container {
+        padding: 1.5rem 1rem;
+    }
+    
+    #colorPalette {
+        min-height: 80px;
+    }
+    
+    .color-swatch {
+        min-height: 80px;
+    }
+    
+    .button-group {
+        gap: 0.5rem;
+    }
+    
+    .action-button {
+        padding: 0.6rem 1rem;
+        font-size: 14px;
+    }
+}

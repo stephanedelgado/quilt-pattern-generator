@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Custom Quilt Design Facility</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/p5@1.7.0/lib/p5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,19 +11,19 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-white">
-    <div class="container mx-auto px-4 py-8 max-w-4xl">
+<body>
+    <div class="container">
         <!-- Header -->
-        <header class="text-center mb-8">
-            <h1 class="text-3xl font-medium mb-4">Custom Quilt Design Facility</h1>
-            <p class="text-sm max-w-2xl mx-auto mb-6 leading-relaxed">
+        <header class="header">
+            <h1>Custom Quilt Design Facility</h1>
+            <p class="description">
                 A practical tool for extracting color palettes and determining distribution in a patchwork artwork. One of quilting's
                 most fundamental designs, this checkerboard reproduces a "Nine Patch" quilt pattern, very popular during the Civil War
                 for its effective use of scraps.
             </p>
-            <div class="mb-8">
-                <label for="imageUpload" class="inline-block rounded-md px-6 py-2 border-2 border-gray-700 cursor-pointer hover:bg-gray-200 transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="inline-block size-6">
+            <div class="upload-section">
+                <label for="imageUpload" class="upload-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="upload-icon">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5"/>
                     </svg>
                     Upload image
@@ -34,33 +33,27 @@
         </header>
 
         <!-- Main Content -->
-        <main class="container mx-auto sm:px-4 sm:py-8 max-w-4xl space-y-6">
+        <main class="main-content">
             <!-- Color Palette -->
-            <div id="colorPalette" class="flex justify-center initial-opacity" style="height: 120px;"></div>
+            <div id="colorPalette" class="responsive-container initial-opacity"></div>
             <!-- Quilt Pattern Canvas -->
-            <div id="canvasContainer" class="flex justify-center initial-opacity"></div>
+            <div id="canvasContainer" class="responsive-container initial-opacity"></div>
             <!-- Action Buttons -->
-            <div class="flex justify-center gap-4">
-                <button id="exportPNG" class="px-6 py-2 border-2 border-gray-700 hover:bg-gray-200 rounded-md transition-colors">
-                    Export PNG
-                </button>
-                <button id="generate" class="px-6 py-2 border-2 border-gray-700 hover:bg-gray-200 rounded-md transition-colors">
-                    Generate
-                </button>
-                <button id="exportSVG" class="px-6 py-2 border-2 border-gray-700 hover:bg-gray-200 rounded-md transition-colors">
-                    Export SVG
-                </button>
+            <div class="button-group">
+                <button id="exportPNG" class="action-button">Export PNG</button>
+                <button id="exportSVG" class="action-button">Export SVG</button>
+                <button id="generate" class="action-button">Generate</button>
             </div>
         </main>
 
         <!-- Footer -->
-        <footer class="text-center mt-16 text-sm">
+        <footer class="footer">
             <p>
-                Feel free to <a href="mailto:stephanedelgado@gmail.com?subject=Quilting%20Design%20Community" class="underline">reach out</a> with ideas for making this space even better.
+                Feel free to <a href="mailto:stephanedelgado@gmail.com?subject=Quilting%20Design%20Community" class="footer-link">reach out</a> with ideas for making this space even better.
                 If you'd like to support the quilting community, PayPal donations are always appreciated. Questions, feedback, and suggestions for improvement are very welcome too.
             </p>
-            <img src="assets/qrcode.png" alt="" class="size-24 inline-block my-8">
-            <small class="block" >Made with speed, love, and Claude © 2025 Stéphane Delgado · MIT License</small>
+            <img src="assets/qrcode.png" alt="" class="qr-code">
+            <small class="copyright">Made with speed, love, and Claude © 2025 Stéphane Delgado · MIT License</small>
         </footer>
     </div>
 

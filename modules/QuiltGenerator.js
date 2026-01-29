@@ -4,12 +4,22 @@ export class QuiltGenerator {
         this.palette = initialPalette;
         this.highlightColor = '#808080'; // Gray for initial state
         this.gridSize = 6;
-        this.squareSize = 75;
-        this.patchSize = 25;
+        
+        // Make responsive - calculate from container
+        this.updateCanvasSize();
+        
         this.crossRow = 0;
         this.crossCol = 0;
         this.centerHighlights = [];
         this.currentSeed = 0;
+    }
+
+    updateCanvasSize() {
+        const container = document.getElementById('canvasContainer');
+        const containerWidth = container ? container.offsetWidth : 450;
+        this.canvasSize = Math.min(containerWidth, 450);
+        this.squareSize = this.canvasSize / this.gridSize;
+        this.patchSize = this.squareSize / 3;
     }
 
     updatePalette(newPalette) {
@@ -121,8 +131,6 @@ export class QuiltGenerator {
             }
         }
     }
-
-    // ... (rest of the methods remain the same: getColorPair, getContrastType, etc.)
     
     getColorPair() {
         const contrastType = this.getContrastType();
@@ -177,7 +185,12 @@ export class QuiltGenerator {
     }
 
     exportSVG() {
-        let svgString = '<svg width="450" height="450" xmlns="http://www.w3.org/2000/svg">\n';
+        // Always export at 450x450 regardless of current canvas size
+        const exportSize = 450;
+        const exportSquareSize = exportSize / this.gridSize;
+        const exportPatchSize = exportSquareSize / 3;
+        
+        let svgString = `<svg width="${exportSize}" height="${exportSize}" xmlns="http://www.w3.org/2000/svg">\n`;
         svgString += '  <!-- Quilt pattern generated with p5.js -->\n';
         
         // Recreate pattern with same seed
@@ -185,8 +198,8 @@ export class QuiltGenerator {
         
         for (let row = 0; row < this.gridSize; row++) {
             for (let col = 0; col < this.gridSize; col++) {
-                const x = col * this.squareSize;
-                const y = row * this.squareSize;
+                const x = col * exportSquareSize;
+                const y = row * exportSquareSize;
                 
                 const colorPair = this.getColorPair();
                 const startWithLight = this.p.random() > 0.5;
@@ -196,8 +209,8 @@ export class QuiltGenerator {
                 
                 for (let i = 0; i < 3; i++) {
                     for (let j = 0; j < 3; j++) {
-                        const rectX = x + j * this.patchSize;
-                        const rectY = y + i * this.patchSize;
+                        const rectX = x + j * exportPatchSize;
+                        const rectY = y + i * exportPatchSize;
                         const position = i * 3 + j + 1;
                         const isCrossPosition = [2, 4, 6, 8].includes(position);
                         const isCenterSquare = (i === 1 && j === 1);
@@ -213,7 +226,7 @@ export class QuiltGenerator {
                             fillColor = useFirstColor ? colorPair[0] : colorPair[1];
                         }
                         
-                        svgString += `  <rect x="${rectX}" y="${rectY}" width="${this.patchSize}" height="${this.patchSize}" fill="${fillColor}"/>\n`;
+                        svgString += `  <rect x="${rectX}" y="${rectY}" width="${exportPatchSize}" height="${exportPatchSize}" fill="${fillColor}"/>\n`;
                     }
                 }
             }
