@@ -36,6 +36,12 @@ body {
     margin-bottom: 2rem;
 }
 
+.header svg {
+    width: 4rem;
+    margin: .5rem 0;
+    color: var(--darkgrey);
+}
+
 h1 {
     font-size: clamp(24px, 5vw, 32px);
     font-weight: 500;
