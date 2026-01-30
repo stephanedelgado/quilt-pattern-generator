@@ -1,3 +1,15 @@
+:root {
+    --black: #000;
+    --white: #fff;
+    --lightgrey: #e5e7eb;
+    --grey: #9ca3af; 
+    --darkgrey: #2d2f34;
+    --success: #10b981;
+    --error: #ef4444;
+    --info: #3b82f6;
+    --warning: #f59e0b;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -7,8 +19,8 @@
 body {
     font-family: 'IBM Plex Mono', monospace;
     font-size: clamp(14px, 2.5vw, 16px);
-    background-color: white;
-    color: #000;
+    background-color: var(--white);
+    color: var(--black);
     line-height: 1.6;
 }
 
@@ -27,7 +39,9 @@ body {
 h1 {
     font-size: clamp(24px, 5vw, 32px);
     font-weight: 500;
+    line-height: 2rem;
     margin-bottom: 1rem;
+
 }
 
 .description {
@@ -46,9 +60,9 @@ h1 {
     align-items: center;
     gap: 0.5rem;
     padding: 0.75rem 1.5rem;
-    border: 2px solid #374151;
+    border: 2px solid var(--darkgrey);
     border-radius: 6px;
-    background-color: white;
+    background-color: var(--white);
     cursor: pointer;
     transition: background-color 0.2s;
     font-family: inherit;
@@ -56,7 +70,7 @@ h1 {
 }
 
 .upload-button:hover {
-    background-color: #e5e7eb;
+    background-color: var(--lightgrey);
 }
 
 .upload-icon {
@@ -92,7 +106,6 @@ h1 {
     flex-wrap: wrap;
     justify-content: center;
     min-height: 100px;
-    /* gap: 0.25rem; */
 }
 
 .color-swatch {
@@ -112,8 +125,8 @@ h1 {
 }
 
 .color-swatch span {
-    font-size: clamp(8px, 1.5vw, 10px);
-    letter-spacing: 1px;
+    font-size: clamp(8px, 1.5vw, 9px);
+    letter-spacing: .1rem;
     user-select: none;
 }
 
@@ -136,30 +149,31 @@ h1 {
 
 .action-button {
     padding: 0.75rem 1.5rem;
-    border: 2px solid #374151;
+    border: 2px solid var(--darkgrey);
     border-radius: 6px;
-    background-color: white;
+    background-color: var(--white);
     cursor: pointer;
     transition: background-color 0.2s;
     font-family: inherit;
     font-size: inherit;
     font-weight: 400;
+    color: var(--black);
 }
 
 .action-button:hover {
-    background-color: #e5e7eb;
+    background-color: var(--lightgrey);
 }
 
 /* Footer */
 .footer {
     text-align: center;
-    margin-top: 4rem;
+    margin-top: 3rem;
     font-size: clamp(12px, 2vw, 14px);
 }
 
-.footer p {
+/* .footer p {
     margin-bottom: 1.5rem;
-}
+} */
 
 .footer-link {
     text-decoration: underline;
@@ -218,7 +232,7 @@ h1 {
 
 .shortcuts-list kbd {
     padding: 0.25rem 0.5rem;
-    background-color: #e5e7eb;
+    background-color: var(--lightgrey);
     border-radius: 4px;
     font-family: inherit;
     font-size: 0.9em;
@@ -226,13 +240,13 @@ h1 {
 
 .shortcuts-footer {
     margin-top: 1rem;
-    color: #6b7280;
+    color: var(--darkgrey);
 }
 
 .close-button {
     margin-top: 1rem;
     padding: 0.5rem 1rem;
-    background-color: #e5e7eb;
+    background-color: var(--lightgrey);
     border: none;
     border-radius: 6px;
     cursor: pointer;
@@ -240,7 +254,7 @@ h1 {
 }
 
 .close-button:hover {
-    background-color: #d1d5db;
+    background-color: color-mix(in srgb, var(--grey) 50%, transparent);
 }
 
 /* Notification */
@@ -251,38 +265,38 @@ h1 {
     padding: 1rem 1.5rem;
     border-radius: 6px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    color: white;
+    color: var(--white);
     z-index: 50;
     transition: opacity 0.3s;
 }
 
 .notification.success {
-    background-color: #10b981;
+    background-color: var(--success);
 }
 
 .notification.error {
-    background-color: #ef4444;
+    background-color: var(--error);
 }
 
 .notification.info {
-    background-color: #3b82f6;
+    background-color: var(--info);
 }
 
 .notification.warning {
-    background-color: #f59e0b;
+    background-color: var(--warning);
 }
 
 /* Keyboard Hint */
 .keyboard-hint {
     text-align: center;
     font-size: clamp(12px, 2vw, 14px);
-    color: #6b7280;
+    color: var(--darkgrey);
     margin-top: 0.5rem;
 }
 
 .keyboard-hint kbd {
     padding: 0.25rem 0.5rem;
-    background-color: #e5e7eb;
+    background-color: var(--lightgrey);
     border-radius: 4px;
     font-family: inherit;
 }
