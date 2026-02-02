@@ -26,8 +26,8 @@ A practical tool to extract color palettes and determine color distribution in p
 - Vanilla JavaScript ES6 modules
 
 ## Responsive layout
-✅ No overflow: `max-width: 450px` caps desktop, `width: 100%` shrinks on mobile
-✅ `windowResized()` calculates p5 canvas size dynamically and keeps it in sync with its container
+- No overflow: `max-width: 450px` caps desktop, `width: 100%` shrinks on mobile
+- `windowResized()` calculates p5 canvas size dynamically and keeps it in sync with its container
 
 ## License
 MIT
