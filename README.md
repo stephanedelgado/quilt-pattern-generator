@@ -1,9 +1,9 @@
 # Custom Quilt Design Facility
 
-A practical tool to extract color palettes and determine distribution for patchwork artworks.
+A practical tool to extract color palettes and determine color distribution in patchwork artworks.
 
 ## Features
-- 🎨 Extract 24-color palette from any image
+- 🎨 Extract 24-color palette from an image
 - 🔄 Generate unique quilt patterns
 - 💾 Export as PNG or SVG
 - ⌨️ Keyboard shortcuts
@@ -24,6 +24,10 @@ A practical tool to extract color palettes and determine distribution for patchw
 - Color Thief for palette extraction
 - Tailwind CSS for styling
 - Vanilla JavaScript ES6 modules
+
+## Responsive layout
+✅ No overflow: `max-width: 450px` caps desktop, `width: 100%` shrinks on mobile
+✅ `windowResized()` calculates p5 canvas size dynamically and keeps it in sync with its container
 
 ## License
 MIT
